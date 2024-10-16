@@ -1,37 +1,29 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define the initial state type
+// Define the initial state and its type
 interface CartItem {
-    id: string;
-    quantity: number;
+  id: string;
+  quantity: number;
 }
 
+// Initial state with some items (can be an empty array as well)
+const initialState: CartItem[] = [];
 
-// create the slice
 const cartSlice = createSlice({
-    name: "cart",
-    initialState: [],
-    reducers: {
-        // // Action to add an item to the cart
-        // addItem(state, action: PayloadAction<CartItem>) {
-        //     const existingItem = state.items.find(item => item.id === action.payload.id);
-        //     if (existingItem) {
-        //         // Update the quantity if the item already exists
-        //         existingItem.quantity += action.payload.quantity;
-        //     } else {
-        //         // Add new item to the cart
-        //         state.items.push(action.payload);
-        //     }
-        // },
-        // // Action to remove an item from the cart
-        // removeItem(state, action: PayloadAction<string>) {
-        //     state.items = state.items.filter(item => item.id !== action.payload);
-        // },
-        // // Action to clear the cart
-        // clearCart(state) {
-        //     state.items = [];
-        // },
-    }
+  name: "cart",
+  initialState,
+  reducers: {
+    // Example action to add an item to the cart
+    addItem: (state, action: PayloadAction<CartItem>) => {
+      state.push(action.payload);
+    },
+    // Example action to remove an item from the cart
+    removeItem: (state, action: PayloadAction<string>) => {
+      return state.filter((item) => item.id !== action.payload);
+    },
+  },
 });
 
+// Export actions and reducer
+export const { addItem, removeItem } = cartSlice.actions;
 export default cartSlice.reducer;
