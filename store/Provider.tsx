@@ -1,24 +1,31 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import store from "./index"; 
-import persistStore from "redux-persist/es/persistStore";
+import {Persistor, persistStore} from "redux-persist";
 
-const persistor = persistStore(store);
+const persistor: Persistor = persistStore(store);
 
 interface ReduxProviderProps {
   children: ReactNode;
 }
 
-const ReduxProvider = ({ children }: ReduxProviderProps) => {
+const ReduxProvider: React.FC<ReduxProviderProps> = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true); // State to handle loading
+
+  useEffect(() => {
+      // Only render PersistGate when mounted in the client
+      setIsLoading(false);
+  }, []);
+
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        {children}
-      </PersistGate>
-    </Provider>
+      <Provider store={store}>
+          <PersistGate loading={isLoading} persistor={persistor}>
+              {children}
+          </PersistGate>
+      </Provider>
   );
 };
 
