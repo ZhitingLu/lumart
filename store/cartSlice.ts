@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // Define the initial state and its type
 interface CartItem {
   id: string;
+  name: string;
   quantity: number;
+  price: number;
 }
 
 // Initial state with some items (can be an empty array as well)
