@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import ReduxProvider from "../store/Provider"; // Adjust the import path
+import ReduxProvider from "../store/Provider";
 import "./globals.css";
+import Header from '../app/components/Header';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +16,21 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "LuMart",
-  description: "Shop anything you want at LuMart",
+  title: "LuMart - Your favorite online store",
+  description: "Shop the best products at LuMart. Fast, reliable, and affordable.",
+  openGraph: {
+    title: "LuMart - The best online store",
+    description: "Find the latest products at unbeatable prices!",
+    url: "www.lumart.com",
+    images: [{
+      url: "/images/og-image.jpg",
+      width: 800,
+      height: 600,
+      alt: "LuMart",
+    }
+    ]
+  },
+  icons: "/favicon.ico",
 };
 
 export default function RootLayout({
@@ -27,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Header />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
