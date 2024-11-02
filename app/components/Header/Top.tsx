@@ -5,12 +5,12 @@ import { RiAccountPinCircleFill, RiArrowDropDownFill } from "react-icons/ri";
 
 const menuItems = [
   {
-    id: 1, icon: <img src="images/countries/morocco.jpg" alt="" className="w-[28px] h-[28px] rounded-full object-cover"></img>,
-    label: "Morocco / usd"
+    id: 1, icon: <img src="images/countries/spain.jpg" alt="country-icon-spain" className="w-[28px] h-[28px] rounded-full object-cover"></img>,
+    label: "Spain / eur"
   },
-  { id: 2, icon: <MdOutlineSecurity className="w-[20px] h-[20px] text-[#ccc] mr-1" />, label: "Buyer protection" },
-  { id: 3, icon: null, label: "Customer Service" },
-  { id: 4, icon: null, label: "Help" },
+  { id: 2, icon: <MdOutlineSecurity className="w-[20px] h-[20px] text-[#ccc] mr-1" />, label: "Buyer protection", hideOnSmall: true },
+  { id: 3, icon: null, label: "Customer Service", hideOnSmall: true },
+  { id: 4, icon: null, label: "Help", hideOnSmall: true },
   { id: 5, icon: <BsSuitHeart className="w-[20px] h-[20px] text-[#ccc] mr-1" />, label: "Wishlist", link: "/profile/wishlist" },
   {
     id: 6, icon: null, label: "Account", link: "/profile/account", isAccount: true
@@ -26,7 +26,8 @@ export default function Top() {
         <div></div>
         <ul className="flex items-center">
           {menuItems.map((item, index) =>
-            <li key={item.id} className="flex items-center text-[#666] cursor-pointer">
+
+            <li key={item.id} className={`flex items-center text-[#666] cursor-pointer ${item.hideOnSmall ? "hidden sm:flex" : ""}`}>
               {item.icon && item.icon} {/* Render icon only if it exists */}
               {item.link ? (
                 <Link href={item.link}>
