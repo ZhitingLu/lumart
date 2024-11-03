@@ -12,9 +12,9 @@ export default function UserMenu({ loggedIn }: UserMenuProps) {
             {loggedIn ? (
                 <div className="flex w-full gap-2.5 px-4">
                     <img className="w-[100px] h-[100px]" src="https://static.vecteezy.com/system/resources/thumbnails/019/896/012/small_2x/female-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" alt="avatar" />
-                    <div className="flex flex-col">
-                        <span>Welcome Back,</span>
-                        <h3>Zhiting</h3>
+                    <div className="flex flex-col mt-2">
+                        <span className='text-[14px]'>Welcome Back,</span>
+                        <h3 className='text-lg font-bold'>Zhiting</h3>
                         <span className='text-[14px] underline text-blue-500'>Sign out</span>
                     </div>
                 </div>
