@@ -21,6 +21,7 @@ const menuItems = [
 
 export default function Top() {
   const [loggedIn, serLoggedIn] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   return (
     <div className="bg-[#f8f8f8] border-t border-b border-[#eee]">
@@ -48,7 +49,10 @@ export default function Top() {
           ))}
 
           {/* account section */}
-          <li className="flex items-center text-[#666] cursor-pointer relative">
+          <li className="flex items-center text-[#666] cursor-pointer relative" 
+          onMouseOver={() => setVisible(true)}
+          onMouseLeave={() => setVisible(false)}
+          >
             {loggedIn ? (
                 <div className="flex items-center gap-[2px]">
                   <img className="w-[20px] h-[20px]" src="https://static.vecteezy.com/system/resources/thumbnails/019/896/012/small_2x/female-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" alt="avatar" />
@@ -62,7 +66,7 @@ export default function Top() {
                   <RiArrowDropDownFill className="w-[20px] h-[20px] text-[#ccc] group-hover:text-neutral-900" />
                 </div>
             )}
-            <UserMenu loggedIn={loggedIn} />
+           {visible &&  <UserMenu loggedIn={loggedIn} />}
           </li>
         </ul>
       </div>
