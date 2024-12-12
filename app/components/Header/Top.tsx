@@ -20,7 +20,7 @@ const menuItems = [
 ]
 
 export default function Top() {
-  const [loggedIn, serLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [visible, setVisible] = useState(false);
 
   return (
@@ -43,8 +43,8 @@ export default function Top() {
                 </>
               )
               }
-            </li>
               <span className="mx-2 text-neutral-300">|</span>
+            </li>
               </React.Fragment>
           ))}
 
