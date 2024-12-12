@@ -7,7 +7,7 @@ interface UserMenuProps {
 
 export default function UserMenu({ loggedIn }: UserMenuProps) {
     return (
-        <div className='w-[280px] shadow-md absolute top-[130%] right-0 bg-white z-99 flex flex-col gap-4 py-4'>
+        <div className='w-[280px] shadow-md absolute top-[110%] right-0 bg-white z-99 flex flex-col gap-4 py-4'>
             <h4 className='text-center font-bold'>Welcome to LuMart!</h4>
             {loggedIn ? (
                 <div className="flex w-full gap-2.5 px-4">
